@@ -50,7 +50,16 @@
 <ng-template #content let-modal>
     <div class="modal-body modal-content-container">
         <div class="image-container">
-            <img src="{{productContent.large_image_url}}" class="img-fluid" />
+            <div class="main-image">
+                <img src="{{largeImage}}" class="img-fluid" />
+            </div>
+            <div class="thumb-image">  
+                <ul class="thumb-list">
+                    <li *ngFor="let quickviewimage of productContent.quick_view_images; let n = index" [ngClass]="{active: isActive(n)}" (click)="changeImage(quickviewimage, n)">
+                        <img src="{{imageurl}}{{quickviewimage}}" class="img-fluid" width="50px"   />
+                    </li>
+                </ul>
+            </div>
         </div>
         <div class="prod-details">
             <button type="button" aria-label="Close" class="modal-close" (click)="modal.dismiss('Cross click')">
@@ -61,7 +70,7 @@
                 <h3>{{productContent.name}}</h3>
             </div>
             <div class="prod-price">
-                <span class="price">TK {{productContent.price}}</span>
+                <span class="price">TK {{productContent.price}}.00</span>
                 <span class="size">{{productContent.size}}</span>
                 <div class="shade">{{productContent.shade}}</div>
             </div>

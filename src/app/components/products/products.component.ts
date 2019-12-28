@@ -20,6 +20,8 @@ export class ProductsComponent implements OnInit {
   cartProducts: any[] = [];
   name:string = "";
   productContent: any[];
+  largeImage: any;
+  activeThumb :any;
 
   imageurl: string = "https://www.maccosmetics.ca";
 
@@ -71,8 +73,27 @@ export class ProductsComponent implements OnInit {
   */
   productDetails(content, item) {
     console.log('item', item);
+    this.activeThumb = 0;
     this.productContent = item;
+    this.largeImage = item.large_image_url;
     this.modalService.open(content, {size: 'xl'});
   }
+
+
+  /*
+  switch image
+  @input: imageURL
+  @return: null
+  */
+  changeImage(imageURL, selectedItem){
+    this.activeThumb = selectedItem;
+    this.largeImage = this.imageurl+imageURL;
+  }
+
+  isActive(item) {
+      console.log('hello' + item);
+      return this.activeThumb === item;
+  };
+
 
 }

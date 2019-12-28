@@ -140,14 +140,49 @@
     }
 
     .image-container{
-        width: 50%;
+        width: calc(50% - 30px);
         display: inline-block;
+        padding: 15px;
+
+        .main-image{
+            animation-name: imageAnim;
+            animation-duration: 4s;
+        }
+
+                /* Safari 4.0 - 8.0 */
+        @-webkit-keyframes imageAnim {
+          from {background-color: red;}
+          to {background-color: yellow;}
+        }
+
+        /* Standard syntax */
+        @keyframes imageAnim {
+          from {opacity: 0;}
+          to {opacity: 1;}
+        }
+
+
+        .thumb-image ul{
+            margin-top: 15px;
+            li{
+                list-style-type: none;
+                padding: 0;
+                margin: 5px;
+                display: inline-block;
+            }
+
+            li.active{
+                border: 2px solid #000;
+            }
+        }
     }
 
     .prod-details{
         display: inline-block;
         width: 50%;
         height: 100%;
+        vertical-align: top;
+        padding-top: 50px;
 
         .modal-close{
             position: absolute;
