@@ -1,10 +1,12 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
 
@@ -16,9 +18,17 @@ export class ProductsComponent implements OnInit {
   totalPrice:number = 0;
   products: any[] = [];
   cartProducts: any[] = [];
+  name:string = "";
+  productContent: any[];
 
   imageurl: string = "https://www.maccosmetics.ca";
-  constructor(private productService: ProductService) { }
+
+  closeResult: string;
+
+  constructor(
+    private productService: ProductService,
+    private modalService: NgbModal
+  ) { }
 
   ngOnInit() {
     this.getProducts("lipgloss");
@@ -52,7 +62,17 @@ export class ProductsComponent implements OnInit {
     this.noOfProductsInTheCartChange.emit(this.noOfProductsInTheCart);
     this.productsInTheCartChange.emit(this.cartProducts);
     this.totalPriceChange.emit(this.totalPrice);
-    
+  }
+
+  /*
+  Render Product Details
+  @input: content(string), item(object)
+  @return: null
+  */
+  productDetails(content, item) {
+    console.log('item', item);
+    this.productContent = item;
+    this.modalService.open(content, {size: 'xl'});
   }
 
 }
