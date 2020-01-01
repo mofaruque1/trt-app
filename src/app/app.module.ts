@@ -10,6 +10,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ProductsComponent } from './components/products/products.component';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
 import { ViewbagComponent } from './components/viewbag/viewbag.component';
+import { PaymentbikashComponent } from './components/paymentbikash/paymentbikash.component';
+import { PaymentpaypalComponent } from './components/paymentpaypal/paymentpaypal.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+
 
 @NgModule({
   declarations: [
@@ -19,13 +23,16 @@ import { ViewbagComponent } from './components/viewbag/viewbag.component';
     FooterComponent,
     ProductsComponent,
     LandingpageComponent,
-    ViewbagComponent
+    ViewbagComponent,
+    PaymentbikashComponent,
+    PaymentpaypalComponent
   ],
   imports: [
     NgbModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPayPalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

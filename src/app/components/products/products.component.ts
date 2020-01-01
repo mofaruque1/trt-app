@@ -91,7 +91,6 @@ export class ProductsComponent implements OnInit {
   }
 
   isActive(item) {
-      console.log('hello' + item);
       return this.activeThumb === item;
   };
 
